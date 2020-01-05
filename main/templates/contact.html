@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <img class="map" src="{% static 'images/map.PNG' %}" alt="mapa con direccion">
+    <div class="google-map">
+        <a href="https://www.google.com.ar/maps/place/Lima+1111,+C1073AAW+CABA/@-34.6211613,-58.3887272,15.25z/data=!4m5!3m4!1s0x95bccb28ea8781cb:0x950feb519009506e!8m2!3d-34.6210713!4d-58.3816733"
+            class="boton-tr boton-mapa" target="_blank">Ver mapa</a>
+    </div>
+
+    <div class="contact">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="input-group input-group-icon">
+                {{ form.name }}
+                <div class="input-icon"> <i class="fas fa-user"></i></div>
+                {% if form.name.errors %}
+                    <span class="obligatorio">{{form.name.errors}}</span>
+                {% endif %}
+            </div>
+
+            <div class="input-group input-group-icon">
+                {{form.email }}
+                <div class="input-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                {% if form.email.errors %}
+                    <span class="obligatorio">{{form.email.errors}}</span>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                {% for radio in form.gender %}
+                    {{ radio.tag }}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                {% endfor %}
+            </div>
+
+            <div class="subject">
+                <div class="input-group">{{form.subject}}</div>
+                {% if form.subject.errors %}
+                    <span class="obligatorio">{{form.subject.errors}}</span>
+                {% endif %}
+            </div>
+
+            <div class="msg">
+                <div class="input-group">{{form.message}}</div>
+                    {% if form.email.errors %}
+                    <span class="obligatorio">{{form.message.errors}}</span>
+                {% endif %} 
+            </div>
+            
+            <div class="input-group send-reset">
+                <input type="submit" value="Enviar" />
+                <input type="reset" value="Limpiar campos" />
+            </div>
+        </form>
+    </div>
+</main>
+
+{% endblock content %}

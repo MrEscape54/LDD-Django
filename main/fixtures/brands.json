@@ -1,0 +1,82 @@
+[
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Breguet",
+        "slug": "breguet",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "TAG",
+        "slug": "tag",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Breitling",
+        "slug": "breitling",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Cartier",
+        "slug": "cartier",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Longines",
+        "slug": "longines",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "MontBlanc",
+        "slug": "montblanc",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Omega",
+        "slug": "omega",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Piaget",
+        "slug": "piaget",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Rolex",
+        "slug": "rolex",
+        "active": true
+    }
+},
+{
+    "model": "main.brand",
+    "fields": {
+        "name": "Zenith",
+        "slug": "zenith",
+        "active": true
+    }
+}
+]

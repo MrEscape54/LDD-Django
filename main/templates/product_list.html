@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% comment %} {% load product_extras %} {% endcomment %}
+
+{% block content %}
+
+<div class="destacados">
+
+    {% comment %} {% for product, image in products_list|zip:product_images_list %} no hace falta el nested{% endcomment %}
+    {% for product in products_list %}
+    <div class="collections coll-watches">
+        <img class="foto" src="{{ product.get_image_url }}">
+        <p class="prod-description">{{ product.name }}</p>
+        <p class="prod-description prices"><strong>$ {{ product.price|intcomma }}</strong></p>
+        <a class="boton-tr boton-tr-watches" href="#">Agregar al carrito</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+

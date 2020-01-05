@@ -1,0 +1,58 @@
+[
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "Buceo",
+    "slug": "buceo",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "Deportivo",
+    "slug": "deportivo",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "Autom\u00e1tico",
+    "slug": "automatico",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "Cron\u00f3grafo",
+    "slug": "cronografo",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "Smart",
+    "slug": "smart",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "Hombre",
+    "slug": "hombre",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "Mujer",
+    "slug": "mujer",
+    "active": true
+  }
+}
+]
