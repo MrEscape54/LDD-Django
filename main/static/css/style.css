@@ -16,7 +16,7 @@ button:focus {
   justify-content: center;
   padding-left: 0;
   list-style: none;
-  border-radius: .25rem;
+  border-radius: 0;
 }
 
 .page-link {
@@ -35,8 +35,17 @@ button:focus {
 
 .page-item:first-child .page-link {
   margin-left: 0;
-  border-top-left-radius: .25rem;
-  border-bottom-left-radius: .25rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.page-link:focus {
+  box-shadow: none;
 }
 
 .table {
@@ -439,6 +448,13 @@ width: 100%;
   bottom: 8px;
   left: 0;
   right: 0;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #343434;
+  background-color: #e5e5e5;
+  border-color: #dee2e6;
 }
 
 footer{
