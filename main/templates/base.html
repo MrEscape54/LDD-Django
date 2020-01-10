@@ -110,21 +110,21 @@
                         {% comment %} <li><a href="#"></a></li> {% endcomment %}
                 {% comment %}     @endif
                 @endforeach {% endcomment %}
-                <li class="active"><a href="#">Deportivo</a></li>
-                <li><a href="#">Automático</a></li>
-                <li><a href="#">Cronógrafo</a></li>
-                <li><a href="#">Buceo</a></li>
-                <li><a href="#">Smart</a></li>
-                <li class="last"><a href="#">Todos</a></li>
+                <li class="active"><a href="{% url 'products' 'deportivo' %}">Deportivo</a></li>
+                <li><a href="{% url 'products' 'automatico' %}">Automático</a></li>
+                <li><a href="{% url 'products' 'cronografo' %}">Cronógrafo</a></li>
+                <li><a href="{% url 'products' 'buceo' %}">Buceo</a></li>
+                <li><a href="{% url 'products' 'smart' %}">Smart</a></li>
+                <li class="last"><a href="{% url 'products' 'all' %}">Todos</a></li>
             </ul>
         </nav>
 
         <nav id="GenderOuter">
             <span>Género</span>
             <ul id="Gender" class="">
-                <li class="active"><a href="#">Hombre</a></li>
-                <li><a href="#">Mujer</a></li>
-                <li class="last"><a href="#">Todos</a></li>
+                <li class="active"><a href="{% url 'products' 'hombre' %}">Hombre</a></li>
+                <li><a href="{% url 'products' 'mujer' %}">Mujer</a></li>
+                <li class="last"><a href="{% url 'products' 'all' %}">Todos</a></li>
             </ul>
         </nav>
     </header>

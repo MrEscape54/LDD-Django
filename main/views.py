@@ -16,7 +16,7 @@ class ContactView(FormView):
 		return super().form_valid(form)
 
 class ProductListView(ListView):
-	template_name = 'product_list.html'
+	template_name = 'main/product_list.html'
 	context_object_name = 'products_list'
 	model = models.Product
 	paginate_by = 24
