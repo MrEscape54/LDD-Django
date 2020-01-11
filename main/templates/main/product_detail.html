@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load humanize %}
+
 
 {% block content %}
   <h1>Producto</h1>
@@ -17,7 +19,7 @@
     </tr>
     <tr>
       <th>Precio</th>
-      <td>{{ object.price }}</td>
+      <td>$ {{ object.price|intcomma }}</td>
     </tr>
     <tr>
       <th>Descripción</th>
@@ -25,7 +27,7 @@
     </tr>
     <tr>
       <th>Etiquetas</th>
-      <td>{{ object.tags.all|join:","|default:"No tags available" }}</td>
+      <td>{{ object.tags.all|join:", "|default:"No tags available" }}</td>
     </tr>
     <tr>
       <th>En stock</th>

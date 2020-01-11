@@ -85,17 +85,17 @@
                         
                     {% comment %} @endif
                 @endforeach {% endcomment %}
-                <li class="active"><a href="#">Breguet</a></li>
-                <li><a href="#">Breitling</a></li>
-                <li><a href="#">Cartier</a></li>
-                <li><a href="#">Longines</a></li>
-                <li><a href="#">Montblanc</a></li>
-                <li><a href="#">Omega</a></li>
-                <li><a href="#">Piaget</a></li>
-                <li><a href="#">Rolex</a></li>
-                <li><a href="#">TAG Heuer</a></li>
-                <li><a href="#">Zenith</a></li>
-                <li class="last"><a href="#">Todos</a></li>
+                <li class="active"><a href="{% url 'productsbrand' 'breguet' %}">Breguet</a></li>
+                <li><a href="{% url 'productsbrand' 'breitling' %}">Breitling</a></li>
+                <li><a href="{% url 'productsbrand' 'cartier' %}">Cartier</a></li>
+                <li><a href="{% url 'productsbrand' 'longines' %}">Longines</a></li>
+                <li><a href="{% url 'productsbrand' 'montblanc' %}">Montblanc</a></li>
+                <li><a href="{% url 'productsbrand' 'omega' %}">Omega</a></li>
+                <li><a href="{% url 'productsbrand' 'piaget' %}">Piaget</a></li>
+                <li><a href="{% url 'productsbrand' 'rolex' %}">Rolex</a></li>
+                <li><a href="{% url 'productsbrand' 'tag' %}">TAG Heuer</a></li>
+                <li><a href="{% url 'productsbrand' 'zenith' %}">Zenith</a></li>
+                <li class="last"><a href="{% url 'productsbrand' 'all' %}">Todos</a></li>
 
             </ul>
         </nav>

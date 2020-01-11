@@ -3,7 +3,7 @@ from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.shortcuts import get_object_or_404
 
-from main import forms, models
+from main import forms, models, views
 
 # Create your views here.
 class ContactView(FormView):
@@ -16,8 +16,8 @@ class ContactView(FormView):
 		return super().form_valid(form)
 
 class ProductListView(ListView):
-	template_name = 'main/product_list.html'
-	context_object_name = 'products_list'
+	""" template_name = 'main/product_list.html' """
+	""" context_object_name = 'product_list' """
 	model = models.Product
 	paginate_by = 24
    
@@ -33,6 +33,24 @@ class ProductListView(ListView):
 			self.tag = get_object_or_404(models.ProductTag, slug=tag)
 		if self.tag:
 			products = models.Product.objects.active().filter(tags=self.tag)
+		else:
+			products = models.Product.objects.active()
+		
+		return products.order_by('name')
+
+class ProductByBrandListView(ListView):
+	template_name = 'main/product_list.html'
+	context_object_name = 'product_by_brand_list'
+	model = models.Product
+	paginate_by = 24
+
+	def get_queryset(self):
+		brand = self.kwargs['brand']
+		self.brand = None
+		if brand != 'all':
+			self.brand = get_object_or_404(models.Brand, slug=brand)
+		if self.brand:
+			products = models.Product.objects.active().filter(brand=self.brand)
 		else:
 			products = models.Product.objects.active()
 		
