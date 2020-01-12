@@ -408,7 +408,7 @@ width: 80%;
 margin: 0 auto 30px;
 background-color: #EFECEA;
 overflow: hidden;
-padding-bottom: 30px;
+padding-bottom: 65px;
 position: relative;
 }
 
@@ -445,7 +445,7 @@ width: 100%;
 
 .boton-tr-watches{
   position: absolute;
-  bottom: 8px;
+  bottom: 10px;
   left: 0;
   right: 0;
 }
@@ -704,7 +704,7 @@ nav span{display: none;}
 
 #MainNav li:last-child a{color:#5d7e95;}
 
-#SubNav li:last-child, #Gender li:last-child{display: none;}
+#SubNav li:last-child {display: none;}
 
 #SubNav li{
   border: none;
@@ -895,7 +895,7 @@ border-radius: 5px;
 .search-scart{width: 70%;}
 
 .collections {
-  width: 20%;
+  width: 19%;
 }
 
 .faq-container {

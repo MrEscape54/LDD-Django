@@ -15,11 +15,7 @@
         <a class="boton-tr boton-tr-watches" href="#">Agregar al carrito</a>
     </div>
     {% endfor %}
-</div>
 
-<div class="destacados">
-
-    {% comment %} {% for product, image in products_list|zip:product_images_list %} no hace falta el nested{% endcomment %}
     {% for product in product_by_brand_list %}
     <div class="collections coll-watches">
         <a href="{% url 'product' product.slug %}"><img class="foto" src="{{ product.get_image_url }}"></a>

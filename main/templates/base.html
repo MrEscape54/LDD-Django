@@ -77,54 +77,29 @@
 
         <nav id="MainNavOuter">
             <span>Marca</span>
-            <ul id="MainNav" class="">
-                {% comment %} @foreach ($brands as $brand)
-                    @if ($brand->id == $brands->count()) {% endcomment %}
-                        {% comment %} <li class="last"><a href="#">Todos</a></li> {% endcomment %}
-                    {% comment %} @else {% endcomment %}
-                        
-                    {% comment %} @endif
-                @endforeach {% endcomment %}
-                <li class="active"><a href="{% url 'productsbrand' 'breguet' %}">Breguet</a></li>
-                <li><a href="{% url 'productsbrand' 'breitling' %}">Breitling</a></li>
-                <li><a href="{% url 'productsbrand' 'cartier' %}">Cartier</a></li>
-                <li><a href="{% url 'productsbrand' 'longines' %}">Longines</a></li>
-                <li><a href="{% url 'productsbrand' 'montblanc' %}">Montblanc</a></li>
-                <li><a href="{% url 'productsbrand' 'omega' %}">Omega</a></li>
-                <li><a href="{% url 'productsbrand' 'piaget' %}">Piaget</a></li>
-                <li><a href="{% url 'productsbrand' 'rolex' %}">Rolex</a></li>
-                <li><a href="{% url 'productsbrand' 'tag' %}">TAG Heuer</a></li>
-                <li><a href="{% url 'productsbrand' 'zenith' %}">Zenith</a></li>
-                <li class="last"><a href="{% url 'productsbrand' 'all' %}">Todos</a></li>
-
+            <ul id="MainNav">
+                {% for brand in brands %}
+                <li><a href="{% url 'product-brand' brand.slug %}">{{ brand.name }}</a></li>
+                {% endfor %}
+                <li class="last"><a href="{% url 'product-brand' 'all' %}">Todos</a></li>
             </ul>
         </nav>
 
         <nav id="SubNavOuter">
             <span>Tipo</span>
-            <ul id="SubNav" class="">
-                {% comment %} @foreach ($categories as $category)
-                    @if ($category->id == $categories->count()) {% endcomment %}
-                        {% comment %} <li class="last"><a href="#">Todos</a></li> {% endcomment %}
-                    {% comment %} @else {% endcomment %}
-                        {% comment %} <li><a href="#"></a></li> {% endcomment %}
-                {% comment %}     @endif
-                @endforeach {% endcomment %}
-                <li class="active"><a href="{% url 'products' 'deportivo' %}">Deportivo</a></li>
-                <li><a href="{% url 'products' 'automatico' %}">Automático</a></li>
-                <li><a href="{% url 'products' 'cronografo' %}">Cronógrafo</a></li>
-                <li><a href="{% url 'products' 'buceo' %}">Buceo</a></li>
-                <li><a href="{% url 'products' 'smart' %}">Smart</a></li>
+            <ul id="SubNav">
+                {% for tag in tags %}
+                <li><a href="{% url 'products' tag.slug %}">{{ tag.name }}</a></li>
+                {% endfor %}
                 <li class="last"><a href="{% url 'products' 'all' %}">Todos</a></li>
             </ul>
         </nav>
 
         <nav id="GenderOuter">
             <span>Género</span>
-            <ul id="Gender" class="">
+            <ul id="Gender">
                 <li class="active"><a href="{% url 'products' 'hombre' %}">Hombre</a></li>
                 <li><a href="{% url 'products' 'mujer' %}">Mujer</a></li>
-                <li class="last"><a href="{% url 'products' 'all' %}">Todos</a></li>
             </ul>
         </nav>
     </header>
@@ -162,7 +137,7 @@
                     <h6>Información</h6>
                     <ul>
                         <li><a href="{% url 'index' %}">Inicio</a></li>
-                        <li><a href="{% url 'about_us' %}">Acerca de</a></li>
+                        <li><a href="{% url 'about-us' %}">Acerca de</a></li>
                         <li><a href="{% url 'contact' %}">Contacto</a></li>
                         <li><a href="{% url 'faq' %}">FAQ</a></li>
                     </ul>

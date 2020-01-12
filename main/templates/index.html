@@ -64,26 +64,19 @@
     </section>
     <div class="brands">
         <ul>
-            <li><a href="#"><img src="{% static 'images/logos/breguet.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images//logos/breitling-logo-update-1.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/cartier.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/longines.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/montblanc.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/omega.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/piaget.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/rolex.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/tag-heuer.png' %}" alt=""></a></li>
-            <li><a href="#"><img src="{% static 'images/logos/zenith.jpg' %}" alt=""></a></li>
+            {% for logo in logos %}
+                <li><img src="{% static 'images/logos/'|add:logo %}" alt=""></li>
+            {% endfor %}  
         </ul>
         <a class="boton-tr" href="#">todas las marcas</a>
     </div>
     <hr style="border:0.2px solid #ccc; width: 80%; margin: 0 auto;">
     <div class="destacados">
-        <h3>Colección 2018</h3>
+        <h3>Colección 2020</h3>
         <div class="collections">
             <img class="foto" src="{% static 'images/collections/cartier-brand.jpg' %}">
-                <img class="logo" src="{% static 'images/collections/cartier.png' %}">
-                <a class="boton-tr" href="#">Ver colección</a>
+            <img class="logo" src="{% static 'images/collections/cartier.png' %}">
+            <a class="boton-tr" href="#">Ver colección</a>
         </div>
         <div class="collections">
             <img class="foto" src="{% static 'images/collections/brand-hublot.jpg' %}">

@@ -1,11 +1,19 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
+from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
-
+import os
 from main import forms, models, views
 
-# Create your views here.
+def show_images(request):
+	image_list=[]
+	app_static_dir = os.path.join(os.path.join(os.path.join(os.path.join(settings.BASE_DIR,'main'),'static'),'images'),'logos')
+	for file in os.listdir(app_static_dir):
+		image_list.append(file)
+	
+	return render(request, 'main/index.html', {'image_brands': image_list})
+
 class ContactView(FormView):
 	template_name = 'contact.html'
 	form_class = forms.ContactForm
