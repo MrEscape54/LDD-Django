@@ -71,7 +71,7 @@
         </div>
         <hr style="border:0.2px solid #ccc; width: 80%;">
         <div class="logo-container">
-            <a href={% url 'index' %}><img src={% static 'images/logo.png' %} alt="logo"></a>
+            <a href={% url 'main:index' %}><img src={% static 'images/logo.png' %} alt="logo"></a>
             <h4>RELOJES DE LUJO</h4>
         </div>
 
@@ -79,9 +79,9 @@
             <span>Marca</span>
             <ul id="MainNav">
                 {% for brand in brands %}
-                <li><a href="{% url 'product-brand' brand.slug %}">{{ brand.name }}</a></li>
+                <li><a href="{% url 'main:product-brand' brand.slug %}">{{ brand.name }}</a></li>
                 {% endfor %}
-                <li class="last"><a href="{% url 'product-brand' 'all' %}">Todos</a></li>
+                <li class="last"><a href="{% url 'main:product-brand' 'all' %}">Todos</a></li>
             </ul>
         </nav>
 
@@ -89,17 +89,17 @@
             <span>Tipo</span>
             <ul id="SubNav">
                 {% for tag in tags %}
-                <li><a href="{% url 'products' tag.slug %}">{{ tag.name }}</a></li>
+                <li><a href="{% url 'main:products' tag.slug %}">{{ tag.name }}</a></li>
                 {% endfor %}
-                <li class="last"><a href="{% url 'products' 'all' %}">Todos</a></li>
+                <li class="last"><a href="{% url 'main:products' 'all' %}">Todos</a></li>
             </ul>
         </nav>
 
         <nav id="GenderOuter">
             <span>Género</span>
             <ul id="Gender">
-                <li class="active"><a href="{% url 'products' 'hombre' %}">Hombre</a></li>
-                <li><a href="{% url 'products' 'mujer' %}">Mujer</a></li>
+                <li class="active"><a href="{% url 'main:products' 'hombre' %}">Hombre</a></li>
+                <li><a href="{% url 'main:products' 'mujer' %}">Mujer</a></li>
             </ul>
         </nav>
     </header>
@@ -136,10 +136,10 @@
                 <div class="foot-info">
                     <h6>Información</h6>
                     <ul>
-                        <li><a href="{% url 'index' %}">Inicio</a></li>
-                        <li><a href="{% url 'about-us' %}">Acerca de</a></li>
-                        <li><a href="{% url 'contact' %}">Contacto</a></li>
-                        <li><a href="{% url 'faq' %}">FAQ</a></li>
+                        <li><a href="{% url 'main:index' %}">Inicio</a></li>
+                        <li><a href="{% url 'main:about-us' %}">Acerca de</a></li>
+                        <li><a href="{% url 'main:contact' %}">Contacto</a></li>
+                        <li><a href="{% url 'main:faq' %}">FAQ</a></li>
                     </ul>
                 </div>
 

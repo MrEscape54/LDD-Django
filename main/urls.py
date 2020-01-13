@@ -4,9 +4,11 @@ from django.views.generic.detail import DetailView
 from main import views
 from main import models
 
+app_name = 'main'
+
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('about/', TemplateView.as_view(template_name='about_us.html'), name='about-us'),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('faq/', TemplateView.as_view(template_name='faq.html'), name='faq'),
     path('products/brand/<slug:brand>', views.ProductByBrandListView.as_view(), name='product-brand'),
