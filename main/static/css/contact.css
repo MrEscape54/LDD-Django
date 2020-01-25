@@ -1,5 +1,5 @@
 .contact{
-   padding: 1em 1em 0;
+  padding: 1em 1em 0;
   margin: 2em 5%;
   border: 0.5px solid #ccc;
 }
@@ -21,6 +21,10 @@
   font-size: 0.85em;
   font-weight: 600;
   color: tomato;
+}
+
+.warning ul{
+  margin: 1em 0;
 }
 
 .login p, .signin p, .logout p a{

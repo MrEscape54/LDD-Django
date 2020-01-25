@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="login-page">
+    <div class="contact signin">
+        <div class="titulos">
+                <p>Registrarse</p>
+                <p><a href="{% url 'main:login' %}">Ya tengo cuenta</a></p>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" id="reg-form" novalidate>
+            {% csrf_token %}
+            
+            <div class="input-group input-group-icon">
+                <input type="email" name="email" value="{{ form.email.value|default:"" }}" placeholder="Correo electrónico" />
+                <div class="input-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                    {% if form.email.errors %}
+                        <span class="obligatorio" >{{form.email.errors}}</span>
+                    {% endif %}
+            </div>
+
+            <div class="input-group input-group-icon">
+                <input type="password"  name="password1" value="{{ form.password1.value|default:"" }}" placeholder="Contraseña (mayúscula y número requerido)" />
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                    {% if form.password1.errors %}
+                        <span class="obligatorio" >{{ form.password1.errors }}</span>
+                    {% endif %}
+            </div>
+
+            <div class="input-group input-group-icon">
+                <input type="password"  name="password2" value="{{ form.password2.value|default:"" }}" placeholder="Repite la contraseña" />
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                    {% if form.password2.errors %}
+                        <span class="obligatorio" >{{ form.password2.errors }}</span>
+                    {% endif %}
+            </div>
+
+            <div class="input-group">
+                <input type="submit" value="Registrarse" />
+                <input type="reset" value="Limpiar campos" />
+            </div>
+        </form>
+    </div>
+</main>
+
+
+{% endblock content %}

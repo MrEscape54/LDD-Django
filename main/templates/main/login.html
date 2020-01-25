@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if form.non_field_errors %}
+    <div class="warning">
+        <div class="input-icon">
+        <i style="font-size:1.5em; color:Tomato; margin-right:5px;" class="fas fa-exclamation-triangle"></i>
+        </div>
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}
+
+<main class="login-page">
+    <div class="contact login">
+        <div class="titulos">
+            <p>Ingresar</p>
+            <p><a href="{% url 'main:register' %}">Soy nuevo</a></p>
+        </div>
+
+        <form method="post" id="login" novalidate>
+            {% csrf_token %}
+            <div id="email" class="input-group input-group-icon">
+                <input id="mail" type="email" name="email" placeholder="Correo electrónico" value="{{ form.email.value|default:"" }}"/>
+                <div class="input-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <i id="mandatory" class="obligatorio"></i>
+                {% if form.email.errors %}
+                    <span class="obligatorio" >{{form.email.errors}}</span>
+                {% endif %}
+
+            </div>
+
+            <div id="password" class="input-group input-group-icon">
+                <input type="password" name="password" placeholder="Contraseña"/>
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <i class="obligatorio"></i>
+                {% if form.password.errors %}
+                    <span class="obligatorio" >{{form.password.errors}}</span>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <input type="submit" value="Ingresar" />
+                <a href="#">Olvidé mi contraseña</a>
+            </div>
+            <div>
+            <label>
+                {% comment %} <input type="checkbox" name="recordar" id="cbox1" value="recordar" {{ old('recordar') ? 'checked' : '' }}> {% endcomment %}
+                <span>Recordar mi usuario</span>
+            </label>
+            </div>
+        </form>
+    </div>
+</main>
+
+{% endblock content %}
