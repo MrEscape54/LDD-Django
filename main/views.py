@@ -11,14 +11,6 @@ from main import forms, models, views
 
 logger = logging.getLogger(__name__)
 
-def show_images(request):
-	image_list=[]
-	app_static_dir = os.path.join(os.path.join(os.path.join(os.path.join(settings.BASE_DIR,'main'),'static'),'images'),'logos')
-	for file in os.listdir(app_static_dir):
-		image_list.append(file)
-	
-	return render(request, 'main/index.html', {'image_brands': image_list})
-
 class ContactView(FormView):
 	template_name = 'contact.html'
 	form_class = forms.ContactForm
@@ -81,11 +73,11 @@ class SignupView(FormView):
 		response = super().form_valid(form)
 		form.save()
 		email = form.cleaned_data.get('email')
+		first_name = form.cleaned_data.get('first_name')
 		raw_password = form.cleaned_data.get('password1')
 		logger.info('Nuevo registro para email=%s a través de SignupView', email)
 		user = authenticate(email=email, password=raw_password)
 		login(self.request, user)
 		form.send_mail()
-		messages.success(self.request, 'Te has registrado exitosamente')
 
 		return response

@@ -64,8 +64,12 @@
     </section>
     <div class="brands">
         <ul>
-            {% for logo in logos %}
-                <li><img src="{% static 'images/logos/'|add:logo %}" alt=""></li>
+            {% for brand in brands %}
+                <li>
+                    <a href="{% url 'main:product-brand' brand.slug %}">
+                        <img src="{{ brand.logo.url }}" alt="logo">
+                    </a>
+                </li>
             {% endfor %}  
         </ul>
         <a class="boton-tr" href="#">todas las marcas</a>

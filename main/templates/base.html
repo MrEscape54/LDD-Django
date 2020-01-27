@@ -17,9 +17,6 @@
 </head>
 
 <body>
-    {% for message in messages %}
-        <div class="{{ message.tags }}">{{ message }}</div>
-    {% endfor %}
     <header>
         <div class="search-scart">
            <div class="search">
@@ -34,38 +31,20 @@
                     <span class="badge">13</span>
                 </div>
                 <div class="ingreso">
-                    <ul>
-                        
-                            <li>
-                                <a href="{% url 'main:login' %}">Ingresar</a>
+                    <ul class="nav nav-tabs">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user.first_name }}</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'main:logout' %}">Salir</a>
+                                    <a class="dropdown-item" href="#">Perfil</a>
+                                </div>
                             </li>
-                        
-                            {% comment %} <li class="avatar-container">
-                                <a><img src=""></a>
-                                <span>
-                                    <div class="submenu-container">
-                                        <div class="submenu-items">
-                                        <ul>
-                                            <li class="desplegable"><a href="#"
-                                                onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                    Salir
-                                                </a></li>
-                                            <li class="desplegable"><a href="#">Perfil</a></li>
-                                           
-                                                <li class="desplegable"><a href="#">Productos</a></li>
-                                                <li class="desplegable"><a href="#">Categorias</a></li>
-                                                <li class="desplegable"><a href="#">Marcas</a></li>
-                                                <li class="desplegable"><a href="#">Usuarios</a></li>
-                                            
-                                            <form id="logout-form" action="" method="POST" style="display: none;">
-                                            
-                                            </form>
-                                        </ul>
-                                        </div>
-                                    </div>
-                                </span>
-                            </li> {% endcomment %}
+                        {% else %}  
+                            <li><a href="{% url 'main:login' %}">Ingresar</a></li>  
+                        {% endif %}                                                        
+                   
+                            {% comment %} <li class="avatar-container"> <a><img src=""></a> </li> {% endcomment %}
                         
                     </ul>
                 </div>

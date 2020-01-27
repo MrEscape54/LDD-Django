@@ -180,6 +180,16 @@ header i{color: #DCDC;}
 
 .avatar-container{position: relative;}
 
+.ingreso .nav{margin: 0;}
+
+.ingreso ul{border-bottom: none;}
+
+.ingreso .dropdown-item.active, .dropdown-item:active {background-color: #959595;}
+
+.ingreso li a:focus, .ingreso .nav-link:hover, .ingreso .nav-tabs .nav-item.show .nav-link, .ingreso .nav-tabs .nav-link.active{
+  border-color: transparent;
+}
+
 .ingreso span{
 position: absolute;
 right: 0;
