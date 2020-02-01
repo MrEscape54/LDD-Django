@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import (UserCreationForm as DjangoUserCreationForm)
 from django.contrib.auth.forms import UsernameField
 from django.contrib.auth import authenticate
+from django.shortcuts import redirect
 from django import forms
 from django.core.mail import send_mail
 import logging

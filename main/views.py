@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.mixins import UserPassesTestMixin
 import os
 import logging
 from django.contrib.auth import login, authenticate
@@ -62,8 +63,13 @@ class ProductByBrandListView(ListView):
 		return products.order_by('name')
 
 class SignupView(FormView):
-	template_name = 'main/register.html'
+	template_name = 'main/auth/register.html'
 	form_class = forms.UserCreationForm
+
+	def dispatch(self, request, *args, **kwargs):
+		if request.user.is_authenticated:
+			return redirect('/')
+		return super().dispatch(request, *args, **kwargs)
 
 	def get_success_url(self):
 		redirect_to = self.request.GET.get('next', '/')
@@ -81,3 +87,4 @@ class SignupView(FormView):
 		form.send_mail()
 
 		return response
+	

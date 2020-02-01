@@ -33,9 +33,18 @@
     font-weight: 700;
 }
 
-   .signin p{
-    font-size: 0.8em;
+.reset h6 {color: #8f8f8f}
+
+.reset p{
+  font-size: 0.85em;
+  color: #000;
 }
+
+.reset ul{font-size: small;}
+
+.signin p{font-size: 0.8em;}
+
+.signin ul{font-size: 0.6em;}
 
 .login p a, .signin p a, .logout p a {
   color: tomato;
@@ -44,7 +53,6 @@
 
 .obligatorio{
   color: red;
-  font-size: 0.7em;
   font-weight: 600;
   margin-top: 0;
   float: left;
@@ -102,6 +110,10 @@ input[type="radio"] + label, input[type="submit"], input[type="reset"]{
   width: 48.5%;
   text-align: center;
   border-radius: 0;
+}
+
+input[type="submit"], input[type="reset"]{
+  margin-top: 5px;
 }
 
 input[type="radio"] + label:last-of-type, input[type="reset"]{

@@ -78,9 +78,15 @@ if not DEBUG:
     EMAIL_HOST = 'smtp.domain.com'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    EMAIL_HOST_PASSWORD = "password" 
+    EMAIL_HOST_PASSWORD = "password"
 else:
-    EMAIL_BACKEND = ("django.core.mail.backends.console.EmailBackend")
+    # EMAIL_BACKEND = ("django.core.mail.backends.console.EmailBackend")
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST_USER = '9c8de33fbcb328'
+    EMAIL_HOST = 'smtp.mailtrap.io'
+    EMAIL_PORT = 2525
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_PASSWORD = '7d3fe38c6b0d43'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
