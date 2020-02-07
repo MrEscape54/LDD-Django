@@ -25,7 +25,7 @@ class ProductListView(ListView):
 	""" template_name = 'main/product_list.html' """
 	""" context_object_name = 'product_list' """
 	model = models.Product
-	paginate_by = 24
+	paginate_by = 20
    
 	""" def get_context_data(self, **kwargs):
 		context = super(ProductListView, self).get_context_data(**kwargs)
@@ -48,7 +48,7 @@ class ProductByBrandListView(ListView):
 	template_name = 'main/product_list.html'
 	context_object_name = 'product_by_brand_list'
 	model = models.Product
-	paginate_by = 24
+	paginate_by = 20
 
 	def get_queryset(self):
 		brand = self.kwargs['brand']

@@ -17,9 +17,10 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'brand', 'slug', 'in_stock', 'formated_price')
+
+    list_display = ('name', 'brand', 'active', 'in_stock', 'formated_price')
     list_filter = ('active', 'in_stock', 'date_updated')
-    list_editable = ('in_stock', )
+    list_editable = ('in_stock', 'active')
     search_fields = ('name', )  
     autocomplete_fields = ('tags',)
     prepopulated_fields = {'slug': ('name',)}
