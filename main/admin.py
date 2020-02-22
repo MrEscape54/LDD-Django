@@ -15,6 +15,11 @@ class BrandAdmin(admin.ModelAdmin):
     search_fields = ('name', )
     prepopulated_fields = {'slug': ('name',)}
 
+class ProductImageInline(admin.TabularInline):
+    model = models.ProductImage
+    extra = 1
+    exclude = ['thumbnail']
+
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
 
@@ -25,6 +30,8 @@ class ProductAdmin(admin.ModelAdmin):
     autocomplete_fields = ('tags',)
     prepopulated_fields = {'slug': ('name',)}
     fields = ('name', 'brand', ('price', 'active', 'in_stock'),'description', 'tags', 'slug')
+
+    inlines = [ProductImageInline]
 
     def formated_price(self, obj):
         return '$ {:20,.2f}'.format(obj.price)

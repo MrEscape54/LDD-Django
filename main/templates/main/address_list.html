@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="login-page">
+    <div class="contact signin address-list">
+        <div class="titulos">
+            <p>Domicilios</p>
+
+            <button class="btn btn-secondary" type="button">
+                <a href="{% url "main:address_create" %}"><i class="fas fa-plus"></i></a>
+            </button>
+        </div>   
+        {% for address in object_list %}
+        <div class="crud"> 
+            <div>
+                <p class="details">{{ address.name }}</p>
+                <p class="details">{{ address.address1 }}</p>
+                <p class="details">{{ address.phone }}</p>
+                <p class="details">{{ address.city }}</p>
+                <p class="details">{{ address.get_country_display}}</p>    
+            </div>
+
+            <div>
+                <button class="btn btn-info" type="button">
+                    <a href="{% url "main:address_update" address.id %}"><i class="fas fa-pen"></i></a>
+                </button>
+
+                <button class="btn btn-danger" type="button">
+                    <a href="{% url "main:address_delete" address.id %}"><i class="fas fa-trash-alt"></i></a>
+                </button>
+            </div>
+        </div>
+        {% if not forloop.last %}<hr style="display: block">{% endif %}
+        {% endfor %}
+    </div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="login-page">
+        <div class="contact signin">
+            <div class="titulos">
+                    <p>Dirección</p>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data" id="reg-form" novalidate>
+                {% csrf_token %}
+                <div class="input-group input-group-icon">
+                    <input type="text" name="name" required value="{{ form.name.value|default:"" }}" placeholder="Nombre Completo" />
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                        {% if form.name.errors %}
+                            <span class="obligatorio" >{{form.name.errors}}</span>
+                        {% endif %}
+                </div>
+
+                <div class="input-group input-group-icon">
+                    <input type="text" name="address1" required value="{{ form.address1.value|default:"" }}" placeholder="Dirección 1" />
+                    <div class="input-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                        {% if form.address1.errors %}
+                            <span class="obligatorio" >{{form.address1.errors}}</span>
+                        {% endif %}
+                </div>
+
+                <div class="input-group input-group-icon">
+                    <input type="text" name="phone" required value="{{ form.phone.value|default:"" }}" placeholder="Teléfono" />
+                    <div class="input-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                        {% if form.phone.errors %}
+                            <span class="obligatorio" >{{form.phone.errors}}</span>
+                        {% endif %}
+                </div>
+
+                <div class="input-group input-group-icon">
+                    <input type="text" name="zip_code" required value="{{ form.zip_code.value|default:"" }}" placeholder="Código Postal" />
+                    <div class="input-icon">
+                        <i class="fas fa-mail-bulk"></i>
+                    </div>
+                        {% if form.zip_code.errors %}
+                            <span class="obligatorio" >{{form.zip_code.errors}}</span>
+                        {% endif %}
+                </div>
+
+                <div class="input-group input-group-icon">
+                    <input type="text" name="city" required value="{{ form.city.value|default:"" }}" placeholder="Ciudad" />
+                    <div class="input-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                        {% if form.city.errors %}
+                            <span class="obligatorio" >{{form.city.errors}}</span>
+                        {% endif %}
+                </div>
+
+                <div class="input-group input-group-icon">
+                    <select name="country" required="" id="id_country">
+                        <option value="" selected="{{ form.country_display.value}}">País</option>
+                        <option value="AR">Argentina</option>
+                        <option value="UY">Uruguay</option>
+                    </select>
+                    <div class="input-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    {% if form.country.errors %}
+                            <span class="obligatorio" >{{form.country.errors}}</span>
+                        {% endif %}
+                </div>
+
+                <div class="input-group">
+                    <input type="submit" value="Enviar"/> 
+                </div>
+            </form>                               
+        </div>
+    </main>
+
+{% endblock content %}

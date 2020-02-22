@@ -8,6 +8,10 @@
 
 .titulos{display: flex; justify-content: space-between; align-items: center;}
 
+.crud{display: flex; align-items: flex-end;justify-content: space-between;}
+
+.address-list{padding-bottom: 16px;}
+
 .error{
   color: tomato;
 }
@@ -27,11 +31,15 @@
   margin: 1em 0;
 }
 
+.login-page .details {margin-bottom: 0; color: #222; font-weight: normal;}
+
 .login p, .signin p, .logout p a{
     font-size: 0.9em;
     color: #5d7e95;
     font-weight: 700;
 }
+
+.signin button {font-size: 0.85em;}
 
 .reset h6 {color: #8f8f8f}
 
@@ -71,7 +79,6 @@
 input, input[type="radio"] + label, textarea, .profile-name, .profile-email {
   font-family: Montserrat, sans-serif;
   font-size: 0.85rem;
-  color: #ccc;
   width: 100%;
   padding: 0.5em;
   background-color: #f9f9f9;
@@ -79,27 +86,25 @@ input, input[type="radio"] + label, textarea, .profile-name, .profile-email {
   box-sizing: border-box;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
   outline: #fff;
   border-color: #5D7E95;
 }
 
-input:focus + .input-icon .fas {
-  color: #5D7E95;
-}
-input + .input-icon .fas {
-  color: #DDD;
-}
+input:focus + .input-icon .fas, select:focus + .input-icon .fas{color: #5D7E95;}
+
+.fas {color: #DDD;}
+
 .input-group-icon .input-icon:after {
   position: absolute;
   top: 0.3em;
   bottom: 0.3em;
-  left: 1.5em;
+  left: 1.6em;
   display: block;
   border-right: 1px solid #e5e5e5;
   content: "";
 }
-input:focus + .input-icon:after {
+input:focus + .input-icon:after, select:focus + .input-icon:after {
   border-right-color: #5D7E95;
 }
 input[type="radio"] {
@@ -162,10 +167,22 @@ main .login{
   position: relative;
 }
 
-.input-group-icon input, .input-group-icon p {
+.input-group-icon input, .input-group-icon p{
   padding-left: 2.5em;
   margin-bottom: 4px;
   color: #222;
+}
+
+.input-group select, .input-group-icon select {
+  display: block;
+  margin-bottom: 4px;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.85rem;
+  width: 100%;
+  padding: 0.5em;
+  padding-left: 2.3em;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
 }
 
 .input-group input, .input-group textarea {

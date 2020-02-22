@@ -85,25 +85,6 @@ button:focus {
   text-decoration: none;
 }
 
-.btn-primary{
-  border-color: #28a745;
-  background-color: #28a745;
-  margin: 5px;
-  font-size: 0.85em;
-}
-
-.btn-secondary{
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-danger{
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.back-office{margin-top: 10px;}
-
 .prod-description{
   font-size: 0.75em;
   text-align: center;

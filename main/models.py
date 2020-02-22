@@ -1,5 +1,5 @@
 from django.contrib.auth.models import (AbstractUser, BaseUserManager,)
-
+from django.urls import reverse
 from django.db import models
 
 class ActiveManager(models.Manager):
@@ -69,7 +69,6 @@ class Product(models.Model):
         except :
             return None
             
-
     class Meta:
         verbose_name = 'Producto'
 
@@ -142,4 +141,27 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = UserManager()
+
+class Address(models.Model):
+    SUPPORTED_COUNTRIES = (
+        ('AR', 'Argentina'),
+        ('UY', 'Uruguay'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField('nombre completo',max_length=60)
+    address1 = models.CharField('dirección 1', max_length=120)
+    phone = models.CharField('teléfono', max_length=20)
+    zip_code = models.CharField('código postal', max_length=12)
+
+    city = models.CharField('ciudad', max_length=50)
+    country = models.CharField('país', max_length=3, choices=SUPPORTED_COUNTRIES)
+
+    def get_absolute_url(self):
+        return reverse("main:address_list")
+    
+
+    def __str__(self):
+        return ", ".join(self.name, self.address1, self.phone, self.zip_code, self.city, self.country)
+    
  
