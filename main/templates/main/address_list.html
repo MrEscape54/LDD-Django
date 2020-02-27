@@ -3,7 +3,7 @@
 {% block content %}
 
 <main class="login-page">
-    <div class="contact signin address-list">
+    <div class="contact signin address-list" id="book-table">
         <div class="titulos">
             <p>Domicilios</p>
 
@@ -15,7 +15,7 @@
         <div class="crud"> 
             <div>
                 <p class="details">{{ address.name }}</p>
-                <p class="details">{{ address.address1 }}</p>
+                <p class="details">{{ address.address1 }} ({{ address.zip_code }})</p>
                 <p class="details">{{ address.phone }}</p>
                 <p class="details">{{ address.city }}</p>
                 <p class="details">{{ address.get_country_display}}</p>    
@@ -27,8 +27,28 @@
                 </button>
 
                 <button class="btn btn-danger" type="button">
-                    <a href="{% url "main:address_delete" address.id %}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url "main:address_delete" address.id %}" class="confirm-delete" js-address="{{address.address1}}" data-toggle="modal" data-target="#confirmDeleteModal" id="{{address.id}}"><i class="fas fa-trash-alt"></i>
+                    </a>
                 </button>
+
+                <div class="modal fade" id="confirmDeleteModal" tabindex="-1" caller-id="" caller-address="" role="dialog" 
+                aria-labelledby="confirmDeleteModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body confirm-delete">
+                                {% comment %} El texto se completa con jQuery {% endcomment %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" caller-id="" data-dismiss="modal" data-target="modal">Cancelar</button>
+                                <form  method="POST" action="{% url "main:address_delete" address.id %}" id="deleteForm">
+                                        {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger" id="confirmDeleteButtonModal">Eliminar</a>
+                                </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {% if not forloop.last %}<hr style="display: block">{% endif %}
@@ -37,3 +57,4 @@
 </main>
 
 {% endblock content %}
+
