@@ -417,7 +417,7 @@ width: 100%;
   display: block;
 }
 
-.boton-tr{
+.boton-tr {
   display: block;
   background-color: #222;
   color: #fff;
@@ -540,6 +540,67 @@ footer a, footer address{
   text-align: center;
   margin: 9px 0;
 }
+
+/*------------------basket.html----------------------------------*/
+.basket-page h5{
+  font-weight: 700;
+  color: gray;
+  margin: 2em 5% -25px;
+}
+
+.basket-info {
+  font-size: 0.85em;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.basket-info a{
+  color: #5d7e95;
+}
+
+.signin .basket-info p{
+  font-size: 100%;
+  color: tomato;
+  margin: 3px;
+}
+
+.basket-detail a{
+  font-size: 0.7em;
+  font-weight: 700;
+  color: #5d7e95;
+}
+
+.signin .basket-detail p{
+  font-size: 0.7em;
+}
+
+.basket-form input[type="number"]{
+  width: 50px;
+  margin-right: 3%;
+}
+
+.basket-form label{
+  font-size: 0.7em;
+  font-weight: 700;
+}
+
+.basket-form button{
+  font-size: 0.7em !important;
+  font-weight: 700;
+  color: white;
+  padding: 4px;
+  background-color: tomato;
+  display: inline;
+  cursor: pointer;
+  border: 0;
+}
+
+.basket-form input[type="checkbox"]{
+  display: none;
+}
+
 
 /* -------------------contact.hmtl-------------------------- */
 .map{

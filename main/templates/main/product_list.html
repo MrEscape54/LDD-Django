@@ -19,7 +19,7 @@
         </a>
         <p class="prod-description">{{ product.name }}</p>
         <p class="prod-description prices"><strong>$ {{ product.price|intcomma }}</strong></p>
-        <a class="boton-tr boton-tr-watches" href="#">Agregar al carrito</a>
+        <a class="boton-tr boton-tr-watches" href="{% url "main:add_to_basket" %}?product_id={{ product.id }}">Agregar al carrito</a>
     </div>
     {% endfor %}
 
@@ -34,9 +34,26 @@
         </a>
         <p class="prod-description">{{ product.name }}</p>
         <p class="prod-description prices"><strong>$ {{ product.price|intcomma }}</strong></p>
+        <a class="boton-tr boton-tr-watches" href="{% url "main:add_to_basket" %}?product_id={{ product.id }}">Agregar al carrito</a>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% comment %} {% for product in product_search_list %}
+    <div class="collections coll-watches">
+        <a href="{% url 'main:product' product.slug %}">
+        {% if product.get_image_url%}
+            <img class="foto" src="{{ product.get_image_url }}">           
+        {% else %}
+            <img class="foto" src="{% static 'images/image-not-found.png' %}">
+        {% endif %}
+        </a>
+        <p class="prod-description">{{ product.name }}</p>
+        <p class="prod-description prices"><strong>$ {{ product.price|intcomma }}</strong></p>
         <a class="boton-tr boton-tr-watches" href="#">Agregar al carrito</a>
     </div>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 </div>
 
 <nav>

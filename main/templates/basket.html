@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+<main class="basket-page">
+    <h5>Carrito</h5>
+    <div class="contact signin">
+        {% if formset %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ formset.management_form }}
+                {% for form in formset %}
+                <div class="basket-container">
+                    <div class="basket-image">
+                        {% if form.instance.product.get_image_url %}
+                            <img class="foto" src="{{ form.instance.product.get_image_url }}">   
+                        {% else %}
+                            <img class="foto" src="{% static 'images/image-not-found.png' %}"> 
+                        {% endif %}
+                    </div>
+                    <div class="basket-info">
+                        <a href="{% url 'main:product' form.instance.product.slug %}">{{ form.instance.product.name }}</a>
+                        <p>$ {{ form.instance.product.price| intcomma }}</p>
+                    </div>
+                    <div class="basket-detail">
+                        <a href="{% url 'main:product' form.instance.product.slug %}">Más información</a>
+                        {% if form.instance.product.in_stock %}
+                            <p style="color: #007600">Disponible</p>
+                        {% else %}
+                            <p style="color: tomato">Sin stock</p>
+                        {% endif %}
+                    </div>
+                    <div class="basket-form">
+                        <label>Cantidad:</label>
+                        {% for field in form.visible_fields %}
+                            {{ field }}
+                        {% endfor %}
+                        <button>Eliminar</button>
+                        {% for field in form.visible_fields %}
+                            {{ field.errors.as_ul }}
+                        {% endfor %}
+                        {# Include the hidden fields in the form #}
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+                <div class="input-group send-reset">
+                    <button type="submit">Actualizar</button>
+                </div>
+            </form>
+        {% else %}
+            <p>No tienes productos en el carrito</p>
+        {% endif %}
+    </div>
+</main>
+
+{% endblock content %}
+

@@ -20,15 +20,19 @@
     <header>
         <div class="search-scart">
            <div class="search">
-           <form action="" method="get">
+           <form action="{% comment %} {% url 'main:product-search' searchInput %} {% endcomment %}" method="get">
                     <i class="fas fa-search cart"></i>
                     <input class="search-input" type="text" value="" name="searchInput" placeholder="Buscar">
                 </form>
            </div>
             <div class="cart-plus-login">
                 <div class="scart">
-                    <a href="#"><i class="fas fa-shopping-cart fa-lg"></i></a>
-                    <span class="badge">13</span>
+                    <a href="{% url 'main:basket' %}"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    {% if request.basket %}
+                        <span class="badge">{{ request.basket.count }}</span>
+                    {% else %}
+                        <span class="badge">0</span> 
+                    {% endif %}
                 </div>
                 <div class="ingreso">
                     <ul class="nav nav-tabs">
@@ -55,6 +59,51 @@
             <a href={% url 'main:index' %}><img src={% static 'images/logo.png' %} alt="logo"></a>
             <h4>RELOJES DE LUJO</h4>
         </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Marca</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#BrandToggler" aria-controls="BrandToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="BrandToggler">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {% for brand in brands %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'main:product-brand' brand.slug %}">{{ brand.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Tipo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#TypeToggler" aria-controls="TypeToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="TypeToggler">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {% for tag in tags %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'main:products' tag.slug %}">{{ tag.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Género</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#GenderToggler" aria-controls="GenderToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="GenderToggler">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="active"><a href="{% url 'main:products' 'hombre' %}">Hombre</a></li>
+                    <li><a href="{% url 'main:products' 'mujer' %}">Mujer</a></li>
+                </ul>
+            </div>
+        </nav>
 
         <nav id="MainNavOuter">
             <span>Marca</span>

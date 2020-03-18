@@ -1,6 +1,7 @@
 from django.contrib.auth.models import (AbstractUser, BaseUserManager,)
 from django.urls import reverse
 from django.db import models
+from django.core.validators import MinValueValidator
 
 class ActiveManager(models.Manager):
     def active(self):
@@ -159,9 +160,27 @@ class Address(models.Model):
 
     def get_absolute_url(self):
         return reverse("main:address_list")
-    
 
     def __str__(self):
         return ", ".join(self.name, self.address1, self.phone, self.zip_code, self.city, self.country)
+
+class Basket(models.Model):
+    OPEN = 10
+    SUBMITTED = 20
+    STATUSES = ((OPEN, 'Open'), (SUBMITTED, 'Submitted'))
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    status = models.IntegerField(choices=STATUSES, default=OPEN)
+
+    def is_empty(self):
+        return self.basketline_set.all().count() == 0
+
+    def count(self):
+        return sum(i.quantity for i in self.basketline_set.all())
+
+class BasketLine(models.Model):
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, verbose_name='carrito')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='producto')
+    quantity = models.PositiveIntegerField('cantidad', default=1, validators=[MinValueValidator(1)])
     
  

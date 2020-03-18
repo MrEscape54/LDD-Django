@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UsernameField
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 from django import forms
+from django.forms import inlineformset_factory
 from django.core.mail import send_mail
 import logging
 from main import models
@@ -59,6 +60,7 @@ class AuthenticationForm(forms.Form):
     def get_user(self):
         return self.user
 
+BasketLineFormSet = inlineformset_factory(models.Basket, models.BasketLine, fields=('quantity',), extra=0,)
 
    
 

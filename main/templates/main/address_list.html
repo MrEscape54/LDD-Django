@@ -8,7 +8,7 @@
             <p>Domicilios</p>
 
             <button class="btn btn-secondary" type="button">
-                <a href="{% url "main:address_create" %}"><i class="fas fa-plus"></i></a>
+                <a href="{% url "main:address_create" %}">Agregar</a>
             </button>
         </div>   
         {% for address in object_list %}
@@ -35,7 +35,7 @@
                 aria-labelledby="confirmDeleteModal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <div class="modal-body confirm-delete">
+                            <div class="modal-body confirm-delete" style="font-size: 0.85em">
                                 {% comment %} El texto se completa con jQuery {% endcomment %}
                             </div>
                             <div class="modal-footer">

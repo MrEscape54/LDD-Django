@@ -1,8 +1,9 @@
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView
-from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.mixins import LoginRequiredMixin
 import logging
 from django.contrib.auth import login, authenticate
@@ -60,6 +61,22 @@ class ProductByBrandListView(ListView):
 			products = models.Product.objects.active()
 		
 		return products.order_by('name')
+
+""" class ProductSearchListView(ListView):
+	template_name = 'main/product_list.html'
+	context_object_name = 'product_search_list_list'
+	model = models.Product
+	paginate_by = 20
+
+	def get_queryset(self):
+		searchInput = self.kwargs['searchInput']
+		self.searchInput = None
+		if self.searchInput:
+			if request.user.is_staff or request.user.is_supersuser:
+				products = model.objects.filter(name=self.searchInput)
+			products = models.objects.active().filter(name=self.searchInput)
+
+		return products.order_by('name') """
 
 class SignupView(FormView):
 	template_name = 'main/auth/register.html'
@@ -121,6 +138,43 @@ class AddressDeleteView(LoginRequiredMixin,DeleteView):
 	def get_queryset(self):
 		return self.model.objects.filter(user=self.request.user)
 
+def add_basket(request):
+	product = get_object_or_404(models.Product, pk=request.GET.get('product_id'))
+
+	basket = request.basket
+	if not request.basket:
+		if request.user.is_authenticated:
+			user = request.user
+		else:
+			user = None
+		basket = models.Basket.objects.create(user=user)
+		request.session['basket_id'] = basket.id
+	
+	basketline, created = models.BasketLine.objects.get_or_create(basket=basket, product=product)
+
+	if not created:
+		basketline.quantity += 1
+		basketline.save()
+	
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def manage_basket(request):
+	if not request.basket:
+		return render(request, 'basket.html', {'formset': None})
+
+	if request.method == 'POST':
+		formset = forms.BasketLineFormSet(request.POST, instance=request.basket)
+		if formset.is_valid():
+			formset.save()
+	
+	else:
+		formset = forms.BasketLineFormSet(instance=request.basket)
+	
+	if request.basket.is_empty():
+		return render(request, 'basket.html', {'formset': None})
+
+	return render(request, 'basket.html', {'formset': formset})
+	
 
 
 
